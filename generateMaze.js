@@ -128,55 +128,59 @@ function checkForMazeNeighbours(frontierCell, mazeCells){
 
   //Iterate through the maze cells checking to see if any of the coords match neighbour cells
   for(var i = 0; i<mazeCells.length; i++){
-    for(var a = 0; a<cellsToCheck.length; i++){
+    for(var a = 0; a<cellsToCheck.length; a++){
 
       //If cells match add them to neighbours array
       if(mazeCells[i].x == cellsToCheck[a].x && mazeCells[i].y == cellsToCheck[a].y){
-        neighbourCells.push({x: cellsToCheck.x, y: cellsToCheck.y, sde: cellsToCheck.sde});
+        neighbourCells.push({x: cellsToCheck[a].x, y: cellsToCheck[a].y, sde: cellsToCheck[a].sde});
       }
     }
   }
-
   //Return complete array
   return neighbourCells;
 }
 
-function addWall(neighbourCells, cell, walls, cellScale){
+function removeWall(neighbourCells, cell, walls, cellScale){
 
   //Initialise Variables
   var lineCoords;
 
-  //Assign x and y;
-  x = randomCell.x;
-  y = randomCell.y;
-
   //Choose a random neighbour cell
+  console.log(neighbourCells.length);
   var randomCell = getRandomCell(neighbourCells)
+  console.log(randomCell);
+  //Assign x and y;
+  var x = cell.x * cellScale;
+  var y = cell.y * cellScale;
 
   //Find the side that connects the two cells
-  var sde = randomCell.sde
+  var sde = randomCell.sde;
+
 
   //Check if side is Up
   if(sde == 'U'){
     lineCoords = {x1: x, y1: y, x2: x + cellScale, y2: y}
-  }
+  };
 
   //Check if side is Down
   if(sde == 'D'){
     lineCoords = {x1: x, y1: y + cellScale, x2: x + cellScale, y2: y + cellScale}
-  }
+  };
 
   //Check if side is Left
   if(sde == 'L'){
     lineCoords = { x1: x, y1: y, x2: x, y2: y + cellScale}
-  }
+  };
 
   //Check if side is Right
   if(sde == 'R'){
     lineCoords = { x1: x + cellScale, y1: y, x2: x + cellScale, y2: y + cellScale}
-  }
+  };
 
-  walls.push({x: lineCoords.x1 , y: lineCoords.y1 , x2: lineCoords.x2, y2: lineCoords.y2});
+  console.log(sde);
+  console.log(lineCoords);
+
+  walls.push({x: lineCoords.x1 , y: lineCoords.y1, x2: lineCoords.x2, y2: lineCoords.y2});
   return walls;
 
 }
