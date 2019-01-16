@@ -112,22 +112,73 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
 }
 
 function checkForMazeNeighbours(frontierCell, mazeCells){
+  //Initialise Variables
   var cellsToCheck = [];
   var neighbourCells = [];
-  //Define coords of frontier cells
-  cellsToCheck[0] = {x: x, y: y - 1}; // (x, y - 1)
-  cellsToCheck[1] = {x: x, y: y + 1}; // (x, y + 1)
-  cellsToCheck[2] = {x: x - 1, y: y}; // (x + 1, y)
-  cellsToCheck[3] = {x: x + 1, y: y}; // (x + 1, y)
 
+  //Assign x and y
+  x = frontierCell.x;
+  y = frontierCell.y;
+
+  //Define coords of the neighbour cells
+  cellsToCheck[0] = {x: x, y: y - 1, sde: 'U'}; // (x, y - 1)
+  cellsToCheck[1] = {x: x, y: y + 1, sde: 'D'}; // (x, y + 1)
+  cellsToCheck[2] = {x: x - 1, y: y, sde: 'L'}; // (x + 1, y)
+  cellsToCheck[3] = {x: x + 1, y: y, sde: 'R'}; // (x + 1, y)
+
+  //Iterate through the maze cells checking to see if any of the coords match neighbour cells
   for(var i = 0; i<mazeCells.length; i++){
     for(var a = 0; a<cellsToCheck.length; i++){
-      if()
+
+      //If cells match add them to neighbours array
+      if(mazeCells[i].x == cellsToCheck[a].x && mazeCells[i].y == cellsToCheck[a].y){
+        neighbourCells.push({x: cellsToCheck.x, y: cellsToCheck.y, sde: cellsToCheck.sde});
+      }
     }
   }
 
-function makeWall(){
-  //Make a wall on any of the sides of a cell
+  //Return complete array
+  return neighbourCells;
+}
+
+function makeWall(neighbourCells, cell, walls, cellScale){
+
+  //Initialise Variables
+  var lineCoords;
+  
+  //Assign x and y;
+  x = randomCell.x;
+  y = randomCell.y;
+
+  //Choose a random neighbour cell
+  var randomCell = getRandomCell(neighbourCells)
+
+  //Find the side that connects the two cells
+  var sde = randomCell.sde
+
+  //Check if side is Up
+  if(sde == 'U'){
+    lineCoords = {x1: x, y1: y, x2: x + cellScale, y2: y}
+  }
+
+  //Check if side is Down
+  if(sde == 'D'){
+    lineCoords = {x1: x, y1: y + cellScale, x2: x + cellScale, y2: y + cellScale}
+  }
+
+  //Check if side is Left
+  if(sde == 'L'){
+    lineCoords = { x1: x, y1: y, x2: x, y2: y + cellScale}
+  }
+
+  //Check if side is Right
+  if(sde == 'R'){
+    lineCoords = { x1: x + cellScale, y1: y, x2: x + cellScale, y2: y + cellScale}
+  }
+
+  walls.push({x: lineCoords.x1 , y: lineCoords.y1 , x2: lineCoords.x2, y2: lineCoords.y2});
+  return walls;
+
 }
 
 function removeFromFrontier(cell, frontier){

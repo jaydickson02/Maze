@@ -8,9 +8,11 @@ var cellScale = 10;
 
 //Initialise variables
 var randomCell;
+var mazeNeighbours;
 var frontier = [];
 var filledArray = [];
 var cellsInMaze = [];
+var walls = [];
 var i = 0;
 
 
@@ -58,6 +60,13 @@ function draw(){
     rect(frontier[i].x * cellScale, frontier[i].y * cellScale, cellScale, cellScale);
   }
 
+  //Check that the wall array is not empty
+  if(walls.length > 0){
+  for(var i = 0; i < walls.length; i++){
+    stroke(255);
+    line(walls[i].x, walls[i].y, walls[i].x2, walls[i].y2);
+  }
+  }
   //Draw the starter cell
   fill(100, 0, 0);
   rect(startRandomCell.x * cellScale, startRandomCell.y * cellScale, cellScale, cellScale);
@@ -70,7 +79,9 @@ if(frontier.length > 0){
 
   frontierRandomCell = getRandomCell(frontier);
 
-  checkForMazeNeighbours(frontierRandomCell)
+  mazeNeighbours = checkForMazeNeighbours(frontierRandomCell, walls, cellScale)
+
+  walls = addWall(mazeNeighbours, frontierRandomCell, walls, cellScale);
 
   cellsInMaze = addToMaze(frontierRandomCell, cellsInMaze);
 
