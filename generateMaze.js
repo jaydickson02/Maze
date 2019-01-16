@@ -146,9 +146,8 @@ function removeWall(neighbourCells, cell, walls, cellScale){
   var lineCoords;
 
   //Choose a random neighbour cell
-  console.log(neighbourCells.length);
   var randomCell = getRandomCell(neighbourCells)
-  console.log(randomCell);
+
   //Assign x and y;
   var x = cell.x * cellScale;
   var y = cell.y * cellScale;
