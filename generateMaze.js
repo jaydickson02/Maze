@@ -141,11 +141,11 @@ function checkForMazeNeighbours(frontierCell, mazeCells){
   return neighbourCells;
 }
 
-function makeWall(neighbourCells, cell, walls, cellScale){
+function addWall(neighbourCells, cell, walls, cellScale){
 
   //Initialise Variables
   var lineCoords;
-  
+
   //Assign x and y;
   x = randomCell.x;
   y = randomCell.y;
