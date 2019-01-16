@@ -42,7 +42,6 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
 
   //Initialise Variables
   var cellsToCheck = [];
-  var cellsToAdd = [];
   var isNotInFrontier = true;
   var isNotInMaze = true;
   var cellCounter = 0;
@@ -59,6 +58,11 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
 
   //Iterate through all the cells that need to be checked
   for(var i = 0; i<cellsToCheck.length; i++){
+    //reset flags
+    isNotInFrontier = true;
+    isNotInMaze = true;
+
+    //Assign x and y
     checkX = cellsToCheck[i].x;
     checkY = cellsToCheck[i].y;
 
@@ -71,6 +75,7 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
 
           //If the cell is in frontier set flag to False
           isNotInFrontier = false;
+
         }
       }
 
@@ -81,7 +86,9 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
 
           //If the cell is in maze set flag to False
           isNotInMaze = false;
+
         }
+
       }
 
       //Check flag to determine if the cell was found to be in the frontier
@@ -90,18 +97,37 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
         //Add cell to array to be added to frontier later
         frontier.push({x: checkX, y: checkY});
 
-        //Reset flag and increment counter
+        //increment counter
         cellCounter++;
-        isNotInFrontier = true;
-        isNotInMaze = true;
+
       }
 
     }
 
-  }
 
+
+  }
   return frontier;
 
+}
+
+function checkForMazeNeighbours(frontierCell, mazeCells){
+  var cellsToCheck = [];
+  var neighbourCells = [];
+  //Define coords of frontier cells
+  cellsToCheck[0] = {x: x, y: y - 1}; // (x, y - 1)
+  cellsToCheck[1] = {x: x, y: y + 1}; // (x, y + 1)
+  cellsToCheck[2] = {x: x - 1, y: y}; // (x + 1, y)
+  cellsToCheck[3] = {x: x + 1, y: y}; // (x + 1, y)
+
+  for(var i = 0; i<mazeCells.length; i++){
+    for(var a = 0; a<cellsToCheck.length; i++){
+      if()
+    }
+  }
+
+function makeWall(){
+  //Make a wall on any of the sides of a cell
 }
 
 function removeFromFrontier(cell, frontier){

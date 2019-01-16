@@ -1,10 +1,10 @@
 //Maze Generation Variables
 var mazeDimensions = {
-  x:10,
-  y:10
+  x:30,
+  y:30
 };
 
-var cellScale = 35;
+var cellScale = 10;
 
 //Initialise variables
 var randomCell;
@@ -16,7 +16,7 @@ var i = 0;
 
 function setup(){
 //Set framerate
-frameRate(10);
+frameRate(60);
 
 //Create canvas that can fit the maze
 createCanvas(mazeDimensions.x * cellScale + 1, mazeDimensions.y * cellScale + 1);
@@ -31,6 +31,8 @@ cellsInMaze = addToMaze(startRandomCell, cellsInMaze);
 
 //Generate frontier
 frontier = addFrontier(startRandomCell, cellsInMaze, frontier, mazeDimensions);
+
+
 }
 
 
@@ -43,16 +45,17 @@ function draw(){
     fill(80);
     rect(filledArray[i].x * cellScale, filledArray[i].y * cellScale, cellScale, cellScale);
   }
-  //Draw the frontier
-  for(var i = 0; i < frontier.length; i++){
-    fill(0, 50, 0);
-    rect(frontier[i].x * cellScale, frontier[i].y * cellScale, cellScale, cellScale);
-  }
 
   //Draw the maze cells
   for(var i = 0; i < cellsInMaze.length; i++){
     fill(0, 0, 20);
     rect(cellsInMaze[i].x * cellScale, cellsInMaze[i].y * cellScale, cellScale, cellScale);
+  }
+
+  //Draw the frontier
+  for(var i = 0; i < frontier.length; i++){
+    fill(0, 50, 0);
+    rect(frontier[i].x * cellScale, frontier[i].y * cellScale, cellScale, cellScale);
   }
 
   //Draw the starter cell
@@ -62,9 +65,12 @@ function draw(){
   //Logic starts here
 
   //Check frontier is not empty
+
 if(frontier.length > 0){
 
   frontierRandomCell = getRandomCell(frontier);
+
+  checkForMazeNeighbours(frontierRandomCell)
 
   cellsInMaze = addToMaze(frontierRandomCell, cellsInMaze);
 
@@ -75,5 +81,6 @@ if(frontier.length > 0){
 } else {
   console.log('Frontier Empty');
 }
+
 
 }
