@@ -34,7 +34,7 @@ function draw(){
       var x = cellsInMaze[i].x * cellScale;
       var y = cellsInMaze[i].y * cellScale;
 
-      if(cellsInMaze[i].walls.t = 'n'){ //Top side
+      if(cellsInMaze[i].walls.t == 'n'){ //Top side
         var x1 = x;
         var y1 = y;
         var x2 = x  + cellScale;
@@ -46,7 +46,7 @@ function draw(){
       }
 
 
-      if(cellsInMaze[i].walls.b = 'n'){ //Bottom side
+      if(cellsInMaze[i].walls.b == 'n'){ //Bottom side
         var x1 = x;
         var y1 = y + cellScale;
         var x2 = x + cellScale;
@@ -57,7 +57,7 @@ function draw(){
       }
 
 
-      if(cellsInMaze[i].walls.l = 'n'){ //Left side
+      if(cellsInMaze[i].walls.l == 'n'){ //Left side
         var x1 = x;
         var y1 = y;
         var x2 = x;
@@ -68,7 +68,7 @@ function draw(){
       }
 
 
-      if(cellsInMaze[i].walls.r = 'n'){ //Right side
+      if(cellsInMaze[i].walls.r == 'n'){ //Right side
         var x1 = x + cellScale;
         var y1 = y;
         var x2 = x + cellScale;
