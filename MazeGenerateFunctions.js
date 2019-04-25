@@ -144,9 +144,7 @@ function checkForMazeNeighbours(frontierCell, mazeCells){
 }
 
 function removeWall(neighbourCells, cell, cellsInMaze){
-  //Init Variables
 
-  var newCellsInMaze = [];
   //Choose a random neighbour cell
   var randomCell = getRandomCell(neighbourCells)
 
