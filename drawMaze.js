@@ -1,10 +1,10 @@
 //Maze Generation Variables
 var mazeDimensions = {
   x:65,
-  y:30
+  y:40
 };
 
-var cellScale = 12;
+var cellScale = 15;
 
 //Initialise variables
 var randomCell;
@@ -18,7 +18,7 @@ var i = 0;
 
 function setup(){
 //Set framerate
-frameRate(300);
+frameRate(1000);
 
 //Create canvas that can fit the maze
 createCanvas(mazeDimensions.x * cellScale + 1, mazeDimensions.y * cellScale + 1);
