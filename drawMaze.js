@@ -1,7 +1,7 @@
 //Maze Generation Variables
 var mazeDimensions = {
-  x:65,
-  y:40
+  x:20,
+  y:20
 };
 
 var cellScale = 15;
