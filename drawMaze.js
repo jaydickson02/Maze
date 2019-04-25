@@ -1,7 +1,7 @@
 //Maze Generation Variables
 var mazeDimensions = {
-  x:65,
-  y:40
+  x:20,
+  y:20
 };
 
 var cellScale = 15;
@@ -61,8 +61,8 @@ function draw(){
   }
 
   //Draw the starter cell
-  fill(200, 150, 150);
-  rect(startRandomCell.x * cellScale, startRandomCell.y * cellScale, cellScale, cellScale);
+  //fill(200, 150, 150);
+  //rect(startRandomCell.x * cellScale, startRandomCell.y * cellScale, cellScale, cellScale);
 
   //Check that the wall array is not empty
   if(walls.length > 0){

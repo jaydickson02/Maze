@@ -8,8 +8,8 @@ var counter = 0;
 var emptyCells = [];
 
 //Generate array of maze cells with coords based on size of maze
-for(var x=0; x< mazeDimensions.x; x++){
-  for(var y=0; y< mazeDimensions.y; y++){
+for(var x = 0; x < mazeDimensions.x; x++){
+  for(var y = 0; y < mazeDimensions.y; y++){
     emptyCells[counter] = {x,y};
     counter++
   }
@@ -26,7 +26,7 @@ function getRandomCell(cellArray){
   //Generate a random number
   var result = Math.random() * cellArray.length;
 
-  //Make number an int
+  //Make number an int (cut off the decimal points)
   result = Math.floor(result);
 
   //select cell from array
