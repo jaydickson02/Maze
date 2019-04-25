@@ -1,6 +1,6 @@
 class cell {
   constructor(x, y) {
-    this.walls = [t:'y', b:'y', l:'y', r:'y']; //By default all edges are present
+    this.walls = {t:'y', b:'y', l:'y', r:'y'}; //By default all edges are present
     this.x = x;
     this.y = y;
   }
