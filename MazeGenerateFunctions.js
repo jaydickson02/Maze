@@ -38,7 +38,7 @@ function getRandomCell(cellArray){
 
 
 
-function addFrontier(cell, mazeCells, frontier, mazeDimensions){
+function addFrontier(cell, mazeCells, frontier, filledArray, mazeDimensions){
 
   //Initialise Variables
   var cellsToCheck = [];
@@ -72,8 +72,8 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
     if(checkX >= 0 && checkY >= 0 && !(checkX >= mazeDimensions.x) && !(checkY >= mazeDimensions.y)){
 
       //Check the cell is not in the frontier array already
-      for(var a = 0; a < frontier.length; a++){
-        if(frontier[a].x == checkX && frontier[a].y == checkY){
+      for(var j = 0; j < frontier.length; j++){
+        if(frontier[j].x == checkX && frontier[j].y == checkY){
 
           //If the cell is in frontier set flag to False
           isNotInFrontier = false;
@@ -83,8 +83,8 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
 
       //Check the cell is not in the maze already
 
-      for(var a = 0; a < mazeCells.length; a++){
-        if(mazeCells[a].x == checkX && mazeCells[a].y == checkY){
+      for(var j = 0; j < mazeCells.length; j++){
+        if(mazeCells[j].x == checkX && mazeCells[j].y == checkY){
 
           //If the cell is in maze set flag to False
           isNotInMaze = false;
@@ -97,7 +97,8 @@ function addFrontier(cell, mazeCells, frontier, mazeDimensions){
       if(isNotInFrontier && isNotInMaze){
 
         //Add cell to array to be added to frontier later
-        frontier.push({x: checkX, y: checkY});
+
+        frontier.push(filledArray[findCellInArray({x: checkX, y: checkY}, filledArray)]);
 
         //increment counter
         cellCounter++;
@@ -142,20 +143,15 @@ function checkForMazeNeighbours(frontierCell, mazeCells){
   return neighbourCells;
 }
 
-function removeWall(neighbourCells, cell, cellsInMaze, cellScale){
+function removeWall(neighbourCells, cell, cellsInMaze){
   //Init Variables
 
   var newCellsInMaze = [];
   //Choose a random neighbour cell
   var randomCell = getRandomCell(neighbourCells)
 
-  //Assign x and y;
-  var x = cell.x * cellScale;
-  var y = cell.y * cellScale;
-
   //Find the side that connects the two cells
   var sde = randomCell.sde;
-
 
   //Check if side is Up
   if(sde == 'U'){
@@ -202,7 +198,7 @@ function addToMaze(cell, cellsInMaze){ //Depricated code rewrite and remove
   return cellsInMaze;
 }
 
-function findCellInArray(cell, cellArray){ //Returns the index for that cell in the array. If the cell isn't found returns false
+function findCellInArray(cell, cellArray){ //Returns the index for the cell in the array. If the cell isn't found returns false
   for(var i = 0; i < cellArray.length; i++){
     if(cell.x == cellArray[i].x && cell.y == cellArray[i].y){
       return i;

@@ -4,8 +4,6 @@ var mazeDimensions = {
   y:20
 };
 
-var cellScale = 15;
-
 //Initialise variables
 var randomCell;
 var mazeNeighbours;
@@ -25,20 +23,20 @@ startRandomCell = getRandomCell(filledArray);
 cellsInMaze = addToMaze(startRandomCell, cellsInMaze);
 
 //Generate frontier
-frontier = addFrontier(startRandomCell, cellsInMaze, frontier, filledArray);
+frontier = addFrontier(startRandomCell, cellsInMaze, frontier, filledArray, mazeDimensions);
 
 while(frontier.length > 0){
 
   frontierRandomCell = getRandomCell(frontier);
 
-  cellsInMaze = addToMaze(filledArray[findCellInArray(frontierRandomCell, filledArray)], cellsInMaze);
+  cellsInMaze = addToMaze(frontierRandomCell, cellsInMaze);
 
   mazeNeighbours = checkForMazeNeighbours(frontierRandomCell, cellsInMaze);
 
-  cellsInMaze = removeWall(mazeNeighbours, frontierRandomCell, cellsInMaze, cellScale);
+  cellsInMaze = removeWall(mazeNeighbours, frontierRandomCell, cellsInMaze);
 
   removeFromFrontier(frontierRandomCell, frontier);
 
-  frontier = addFrontier(frontierRandomCell, cellsInMaze, frontier, mazeDimensions);
+  frontier = addFrontier(frontierRandomCell, cellsInMaze, frontier, filledArray, mazeDimensions);
 
 }
