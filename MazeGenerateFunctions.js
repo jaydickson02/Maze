@@ -19,8 +19,6 @@ for(var x = 0; x < mazeDimensions.x; x++){
 return emptyCells;
 }
 
-
-
 function getRandomCell(cellArray){
 
   //Generate a random number

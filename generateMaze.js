@@ -1,7 +1,7 @@
 //mazeDimensions
 var mazeDimensions = {
-  x:20,
-  y:20
+  x:5,
+  y:5
 };
 
 //Initialise variables

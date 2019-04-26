@@ -1,12 +1,17 @@
 
 //Maze Generation Variables
 var mazeDimensions = {
-  x:20,
-  y:20
+  x:5,
+  y:5
 };
 
 var cellScale = 15;
 
+var run = true; //fix this just for testing
+
+var player1;
+var endCell;
+var startCell;
 
 function setup(){
 
@@ -20,7 +25,7 @@ createCanvas(mazeDimensions.x * cellScale + 1, mazeDimensions.y * cellScale + 1)
 
 
 function draw(){
-
+//background(255);
 
 
   //Draw the maze cells
@@ -82,16 +87,33 @@ function draw(){
 
     }
 
-    //Sanity Check
-  /*  var counter = -400;
+    if(run == true){ //fix this just for testing
+    //Solve the maze
+    var randomStartCell = Math.floor(random(cellsInMaze.length));
+    var randomEndCell = Math.floor(random(cellsInMaze.length));
 
-    for(var i = 0; i < cellsInMaze.length; i++){
-      for(var j = 0; j < cellsInMaze.length; j++){
-        if(cellsInMaze[i].x == cellsInMaze[j].x && cellsInMaze[i].y == cellsInMaze[j].y){
-          counter++
-        }
-      }
+    while(randomStartCell == randomEndCell){
+      randomEndCell = Math.floor(Math.random * cellsInMaze.length);
     }
-    console.log('Repeats: ' + counter);
-    */
+
+    startCell = cellsInMaze[randomStartCell];
+    endCell = cellsInMaze[randomEndCell];
+
+    player1 = new mover(startCell.x, startCell.y, cellsInMaze);
+
+    run = false; //fix this just for testing
+  }
+  fill('green');
+  rect(startCell.x * cellScale, startCell.y * cellScale, cellScale, cellScale);
+  fill('red');
+  rect(endCell.x * cellScale, endCell.y * cellScale, cellScale, cellScale);
+  fill(255);
+  console.log(player1.moves);
+
+  player1.draw();
+  player1.checkEndCell(endCell);
+  player1.move();
+
+
+
 }
