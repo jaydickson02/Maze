@@ -1,19 +1,19 @@
 
 //Maze Generation Variables
 var mazeDimensions = {
-  x:5,
-  y:5
+  x:30,
+  y:30
 };
 
 var cellScale = 15;
 
-var run = true; //fix this just for testing
+var run = false; //fix this just for testing
 
 var player1;
 var endCell;
 var startCell;
 
-function setup(){
+function setup() {
 
 //Set framerate
 frameRate(1000);
@@ -24,12 +24,13 @@ createCanvas(mazeDimensions.x * cellScale + 1, mazeDimensions.y * cellScale + 1)
 }
 
 
-function draw(){
+function draw() {
 //background(255);
 
 
   //Draw the maze cells
-  for(var i = 0; i < cellsInMaze.length; i++){
+
+  for (var i = 0; i < cellsInMaze.length; i++) {
 
     fill(255);
     rect(cellsInMaze[i].x * cellScale, cellsInMaze[i].y * cellScale, cellScale, cellScale);
@@ -51,7 +52,7 @@ function draw(){
       }
 
 
-      if(cellsInMaze[i].walls.b == 'n'){ //Bottom side
+      if(cellsInMaze[i].walls.b == 'n') { //Bottom side
         var x1 = x;
         var y1 = y + cellScale;
         var x2 = x + cellScale;
@@ -62,7 +63,7 @@ function draw(){
       }
 
 
-      if(cellsInMaze[i].walls.l == 'n'){ //Left side
+      if(cellsInMaze[i].walls.l == 'n') { //Left side
         var x1 = x;
         var y1 = y;
         var x2 = x;

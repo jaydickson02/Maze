@@ -1,18 +1,14 @@
 //mazeDimensions
 var mazeDimensions = {
-  x:5,
-  y:5
+  x: 30,
+  y: 30
 };
 
 //Initialise variables
-var randomCell;
 var mazeNeighbours;
 var frontier = [];
 var filledArray = [];
 var cellsInMaze = [];
-var walls = [];
-var i = 0;
-var finalMaze = [];
 
 //Generate the maze cells
 filledArray = fillMazeCellArray(mazeDimensions);
@@ -25,7 +21,7 @@ cellsInMaze = addToMaze(startRandomCell, cellsInMaze);
 //Generate frontier
 frontier = addFrontier(startRandomCell, cellsInMaze, frontier, filledArray, mazeDimensions);
 
-while(frontier.length > 0){
+while (frontier.length > 0) {
 
   frontierRandomCell = getRandomCell(frontier);
 
