@@ -176,8 +176,6 @@ function removeWall(neighbourCells, cell, walls, cellScale){
     lineCoords = { x1: x + cellScale, y1: y, x2: x + cellScale, y2: y + cellScale}
   };
 
-  console.log(sde);
-  console.log(lineCoords);
 
   walls.push({x: lineCoords.x1 , y: lineCoords.y1, x2: lineCoords.x2, y2: lineCoords.y2});
   return walls;

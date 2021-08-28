@@ -1,7 +1,8 @@
 //Maze Generation Variables
+
 var mazeDimensions = {
-  x:20,
-  y:20
+  x: 20,
+  y: 20
 };
 
 var cellScale = 15;
@@ -17,6 +18,12 @@ var i = 0;
 
 
 function setup(){
+
+//Auto Sizes so the maze fills the screen
+mazeDimensions.x = Math.floor(windowWidth/cellScale) - 2
+
+mazeDimensions.y = Math.floor(windowHeight/cellScale) - 2
+
 //Set framerate
 frameRate(1000);
 
