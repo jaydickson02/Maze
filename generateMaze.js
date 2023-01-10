@@ -158,22 +158,22 @@ function removeWall(neighbourCells, cell, walls, cellScale) {
 
   //Check if side is Up
   if (sde == 'U') {
-    lineCoords = { x1: x, y1: y, x2: x + cellScale, y2: y }
+    lineCoords = { x1: x + 1, y1: y, x2: x + cellScale - 1, y2: y }
   };
 
   //Check if side is Down
   if (sde == 'D') {
-    lineCoords = { x1: x, y1: y + cellScale, x2: x + cellScale, y2: y + cellScale }
+    lineCoords = { x1: x + 1, y1: y + cellScale, x2: x + cellScale - 1, y2: y + cellScale }
   };
 
   //Check if side is Left
   if (sde == 'L') {
-    lineCoords = { x1: x, y1: y, x2: x, y2: y + cellScale }
+    lineCoords = { x1: x, y1: y + 1, x2: x, y2: y + cellScale - 1 }
   };
 
   //Check if side is Right
   if (sde == 'R') {
-    lineCoords = { x1: x + cellScale, y1: y, x2: x + cellScale, y2: y + cellScale }
+    lineCoords = { x1: x + cellScale, y1: y + 1, x2: x + cellScale, y2: y + cellScale - 1 }
   };
 
 
