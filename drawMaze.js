@@ -49,11 +49,11 @@ function draw() {
 
   //Drawing everything
 
-  //Draw the maze grid
-  for (var i = 0; i < filledArray.length; i++) {
-    fill(255);
-    rect(filledArray[i].x * cellScale, filledArray[i].y * cellScale, cellScale, cellScale);
-  }
+  //Draw the maze grid. Optional for different style of generation.
+  // for (var i = 0; i < filledArray.length; i++) {
+  //   fill(255);
+  //   rect(filledArray[i].x * cellScale, filledArray[i].y * cellScale, cellScale, cellScale);
+  // }
 
   //Draw the maze cells
   for (var i = 0; i < cellsInMaze.length; i++) {
@@ -68,8 +68,10 @@ function draw() {
   }
 
   //Draw the starter cell
-  fill(200, 150, 150);
-  rect(startRandomCell.x * cellScale, startRandomCell.y * cellScale, cellScale, cellScale);
+  if (frontier.length > 0) {
+    fill(200, 200, 200);
+    rect(startRandomCell.x * cellScale, startRandomCell.y * cellScale, cellScale, cellScale);
+  }
 
   //Check that the wall array is not empty
   if (walls.length > 0) {
@@ -85,7 +87,7 @@ function draw() {
   //Logic starts here
 
   //Check frontier is not empty
-  for (let i = 0; i < 10; i++) { //Solves more of the maze per draw cycle
+  for (let i = 0; i < 50; i++) { //Solves more of the maze per draw cycle
     if (frontier.length > 0) {
 
       frontierRandomCell = getRandomCell(frontier);
